@@ -62,7 +62,7 @@ void	hanoe(int number, t_list *cols[3], int delay, int d[3])
 	ft_lstadd(&cols[d[1]], ft_lstnew(cols[d[0]]->content, cols[d[0]]->content_size));
 	ft_lstpop(&cols[d[0]]);
 	draw(cols);
-	sleep(delay);
+	usleep(delay ? 500000 : 200);
 	hanoe(number - 1, cols, delay, (int [3]){d[2], d[1], d[0]});
 }
 
@@ -99,7 +99,7 @@ void	solve(int delay)
 	}
 	ft_memdel((void **)&s_tmp);
 	draw(cols);
-	sleep(delay);
+	usleep(delay ? 500000 : 200);
 	hanoe(blocksCount, cols, delay, (int[3]){0, 2, 1});
 }
 
